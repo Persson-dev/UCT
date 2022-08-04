@@ -1,6 +1,6 @@
 add_rules("mode.debug", "mode.release")
 
-add_requires("opengl", "glfw >= 3", "glew >= 2")
+add_requires("opengl", "glfw >= 3")
 
 target("UCT")
 	set_kind("binary")
@@ -8,7 +8,7 @@ target("UCT")
 	add_includedirs("include")
 	add_includedirs("libs")
 
-	add_packages("opengl", "glfw", "glew")
+	add_packages("opengl", "glfw")
 
 	set_languages("c++17")
 
@@ -16,6 +16,8 @@ target("UCT")
 	add_includedirs("libs/imgui")
 	add_files("libs/imgui/*.cpp", "libs/imgui/backends/imgui_impl_opengl3.cpp", "libs/imgui/backends/imgui_impl_glfw.cpp")
 
-	if is_os("windows") then
+	if is_os("linux") then
+		add_links("dl")
+	elseif is_os("windows") then
 		add_ldflags("-static")
 	end
