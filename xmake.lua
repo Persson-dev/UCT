@@ -22,6 +22,6 @@ target("UCT")
 		add_ldflags("-static")
 		-- Hide console
 		if is_mode("release") then
-			add_ldflags("mwindows", {force = true})
+			add_ldflags("-mwindows")
 		end
 	end
