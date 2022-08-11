@@ -25,7 +25,7 @@ static constexpr float DELETE_SLOT_BUTTON_OFFSET = 50.0f;
 
 static void RenderTemplate(save::Template& t, std::size_t index) {
 	if (ImGui::CollapsingHeader(t.name.c_str())) {
-		ImGui::InputTextMultiline(std::string("Template##" + t.name).c_str(), t.templateRaw, sizeof(t.templateRaw), ImVec2(1000, 500));
+		ImGui::InputTextMultiline(std::string("Template##" + t.name).c_str(), t.templateRaw, sizeof(t.templateRaw), ImVec2(2000, 500));
 		for (save::TemplateSlot& slot : t.templateSlots) {
 			ImGui::InputText(slot.name.c_str(), slot.valueBuffer, sizeof(slot.valueBuffer));
 			ImGui::SameLine();
@@ -77,7 +77,7 @@ static void RenderTemplate(save::Template& t, std::size_t index) {
 		if(ImGui::IsPopupOpen("ViewTemplate")) {
 			ImGui::BeginPopup("ViewTemplate");
 			std::string view = utils::format(t);
-			ImGui::InputTextMultiline("Aperçu", view.data(), view.size(), ImVec2(1000, 500), ImGuiInputTextFlags_ReadOnly);
+			ImGui::InputTextMultiline("Aperçu", view.data(), view.size(), ImVec2(2000, 500), ImGuiInputTextFlags_ReadOnly);
 			if (ImGui::Button("Copier dans le presse-papier")) {
 				ImGui::SetClipboardText(view.c_str());
 			}
