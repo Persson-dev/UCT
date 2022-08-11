@@ -20,4 +20,8 @@ target("UCT")
 		add_links("dl")
 	elseif is_os("windows") then
 		add_ldflags("-static")
+		-- Hide console
+		if is_mode("release") then
+			add_ldflags("mwindows", {force = true})
+		end
 	end
